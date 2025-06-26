@@ -49,4 +49,25 @@ class Code {
   String toString() {
     return 'Code{id: $id, number: $number, eventId: $eventId, code: $code, usable: $usable, used: $used, userName: $userName}';
   }
+
+  // copyWithメソッドを追加: 既存のCodeオブジェクトのプロパティを一部変更して新しいオブジェクトを作成
+  Code copyWith({
+    int? id,
+    int? number,
+    int? eventId,
+    String? code,
+    int? usable,
+    int? used,
+    String? userName,
+  }) {
+    return Code(
+      id: id ?? this.id,
+      number: number ?? this.number,
+      eventId: eventId ?? this.eventId,
+      code: code ?? this.code,
+      usable: usable ?? this.usable,
+      used: used ?? this.used,
+      userName: userName ?? this.userName,
+    );
+  }
 }

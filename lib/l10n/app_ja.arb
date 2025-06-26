@@ -1,7 +1,130 @@
 {
     "@@locale": "ja",
-    "appTitle": "Ambassador App",
+    "appTitle": "イベント管理アプリ",
     "eventListPageTitle": "イベント一覧",
     "createEventMessage": "イベントを作成してください",
-    "addNewEventTooltip": "新しいイベントを追加"
+    "addNewEventTooltip": "新しいイベントを追加",
+    "addEventPageTitle": "新しいイベントを追加",          
+    "editEventPageTitle": "イベントを編集",            
+    "eventNameLabel": "イベント名",                    
+    "eventNameRequired": "イベント名は必須です",          
+    "eventDateLabel": "開催日",                      
+    "eventDateRequired": "開催日は必須です",             
+    "eventCodesLabel": "コード",                    
+    "eventCodesHint": "コードを改行またはカンマで区切って入力してください (例: CODE1, CODE2\\nCODE3)", 
+    "eventCodesRequired": "少なくとも1つのコードを入力してください。", 
+    "saveButtonText": "保存",                      
+    "eventSavedSuccess": "{eventName} とコードを保存しました！", 
+    "@eventSavedSuccess": {
+        "placeholders": {
+            "eventName": {
+                "type": "String"
+            }
+        }
+    },
+    "eventUpdatedSuccess": "{eventName} を更新しました！", 
+    "@eventUpdatedSuccess": {
+        "placeholders": {
+            "eventName": {
+                "type": "String"
+            }
+        }
+    },
+    "eventSaveFailed": "イベントの保存に失敗しました: {error}", 
+    "@eventSaveFailed": {
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "eventTotalCountLabel": "総コード数", 
+    "eventUsableCountLabel": "利用可能数", 
+    "menuTitle": "メニュー",
+    "eventUrlLabel": "イベントURL (任意)",
+    "eventUrlHint": "例: https://example.com/event",
+    "deleteButtonText": "削除",
+    "deleteConfirmTitle": "削除の確認",
+    "deleteEventMessage": "イベント「{eventName}」を削除してもよろしいですか？関連する全てのコードも削除されます。", 
+    "@deleteEventMessage": {
+        "placeholders": {
+            "eventName": {
+                "type": "String"
+            }
+        }
+    },
+    "eventDeletedSuccess": "イベント「{eventName}」と関連コードを削除しました。", 
+    "@eventDeletedSuccess": {
+        "placeholders": {
+            "eventName": {
+                "type": "String"
+            }
+        }
+    },
+    "eventDeleteFailed": "イベントの削除に失敗しました: {error}",
+    "cancelButtonText": "cancel",
+    "editButtonText": "編集",               
+    "codeListButtonText": "コード一覧",      
+    "codeButtonText": "コード",
+    "codeListPageTitle": "{eventName} のコード一覧",       
+    "@codeListPageTitle": {
+        "placeholders": {
+            "eventName": {
+                "type": "String"
+            }
+        }
+    },
+    "noCodesMessage": "このイベントにはコードがありません。", 
+    "codeNumberLabel": "No.",                          
+    "codeLabel": "コード",                               
+    "codeUsableLabel": "利用可能",                       
+    "codeUsedLabel": "使用済み",                         
+    "codeUserNameLabel": "使用ユーザー名 (任意)",         
+    "codeSavedSuccess": "コード「{code}」を保存しました。", 
+    "@codeSavedSuccess": {
+        "placeholders": {
+            "code": {
+                "type": "String"
+            }
+        }
+    },
+    "codeSaveFailed": "コードの保存に失敗しました: {error}", 
+    "@codeSaveFailed": {
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "copyCodeButtonText": "コードをコピー",              
+    "copiedCodeMessage": "コードをクリップボードにコピーしました！",
+    "codeUsagePageTitle": "{eventName} のコード利用",     
+    "@codeUsagePageTitle": {
+        "placeholders": {
+            "eventName": {
+                "type": "String"
+            }
+        }
+    },
+    "noUsableCodesAvailable": "このイベントには利用可能なコードがありません。", 
+    "qrCodeGenerationError": "QRコードの生成に失敗しました: {error}", 
+    "@qrCodeGenerationError": {
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "markAsUsedButtonText": "使用済みにする",               
+    "codeStatusUsed": "ステータス: 使用済み",             
+    "codeStatusAvailable": "ステータス: 利用可能",         
+    "codeMarkedAsUsedSuccess": "コード「{code}」を使用済みにしました。", 
+    "@codeMarkedAsUsedSuccess": {
+        "placeholders": {
+            "code": {
+                "type": "String"
+            }
+        }
+    },
+    "codeMarkedAsUsedFailed": "コードを使用済みにできませんでした: {error}"
 }

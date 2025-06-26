@@ -98,7 +98,7 @@ abstract class AppLocalizations {
   /// No description provided for @appTitle.
   ///
   /// In en, this message translates to:
-  /// **'Ambassador App'**
+  /// **'Event Management App'**
   String get appTitle;
 
   /// No description provided for @eventListPageTitle.
@@ -118,6 +118,282 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Add New Event'**
   String get addNewEventTooltip;
+
+  /// No description provided for @addEventPageTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Add New Event'**
+  String get addEventPageTitle;
+
+  /// No description provided for @editEventPageTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Event'**
+  String get editEventPageTitle;
+
+  /// No description provided for @eventNameLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Event Name'**
+  String get eventNameLabel;
+
+  /// No description provided for @eventNameRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Event Name cannot be empty'**
+  String get eventNameRequired;
+
+  /// No description provided for @eventDateLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Date'**
+  String get eventDateLabel;
+
+  /// No description provided for @eventDateRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Date cannot be empty'**
+  String get eventDateRequired;
+
+  /// No description provided for @eventCodesLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Codes'**
+  String get eventCodesLabel;
+
+  /// No description provided for @eventCodesHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter codes, separated by newlines or commas. (e.g., CODE1, CODE2\\nCODE3)'**
+  String get eventCodesHint;
+
+  /// No description provided for @eventCodesRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter at least one code.'**
+  String get eventCodesRequired;
+
+  /// No description provided for @saveButtonText.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get saveButtonText;
+
+  /// No description provided for @eventSavedSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Event \"{eventName}\" and codes saved successfully!'**
+  String eventSavedSuccess(String eventName);
+
+  /// No description provided for @eventUpdatedSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Event \"{eventName}\" updated successfully!'**
+  String eventUpdatedSuccess(String eventName);
+
+  /// No description provided for @eventSaveFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to save event: {error}'**
+  String eventSaveFailed(String error);
+
+  /// No description provided for @eventTotalCountLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Codes'**
+  String get eventTotalCountLabel;
+
+  /// No description provided for @eventUsableCountLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Usable Codes'**
+  String get eventUsableCountLabel;
+
+  /// No description provided for @menuTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Menu'**
+  String get menuTitle;
+
+  /// No description provided for @eventUrlLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Event URL (Optional)'**
+  String get eventUrlLabel;
+
+  /// No description provided for @eventUrlHint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g., https://example.com/event'**
+  String get eventUrlHint;
+
+  /// No description provided for @deleteButtonText.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get deleteButtonText;
+
+  /// No description provided for @deleteConfirmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Deletion'**
+  String get deleteConfirmTitle;
+
+  /// No description provided for @deleteEventMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to delete event \"{eventName}\"? All associated codes will also be deleted.'**
+  String deleteEventMessage(String eventName);
+
+  /// No description provided for @eventDeletedSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Event \"{eventName}\" and its codes deleted successfully.'**
+  String eventDeletedSuccess(String eventName);
+
+  /// No description provided for @eventDeleteFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to delete event: {error}'**
+  String eventDeleteFailed(Object error);
+
+  /// No description provided for @cancelButtonText.
+  ///
+  /// In en, this message translates to:
+  /// **'cancel'**
+  String get cancelButtonText;
+
+  /// No description provided for @editButtonText.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get editButtonText;
+
+  /// No description provided for @codeListButtonText.
+  ///
+  /// In en, this message translates to:
+  /// **'Code List'**
+  String get codeListButtonText;
+
+  /// No description provided for @codeButtonText.
+  ///
+  /// In en, this message translates to:
+  /// **'Code'**
+  String get codeButtonText;
+
+  /// No description provided for @codeListPageTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Codes for {eventName}'**
+  String codeListPageTitle(String eventName);
+
+  /// No description provided for @noCodesMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'No codes found for this event.'**
+  String get noCodesMessage;
+
+  /// No description provided for @codeNumberLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'No.'**
+  String get codeNumberLabel;
+
+  /// No description provided for @codeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Code'**
+  String get codeLabel;
+
+  /// No description provided for @codeUsableLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Usable'**
+  String get codeUsableLabel;
+
+  /// No description provided for @codeUsedLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Used'**
+  String get codeUsedLabel;
+
+  /// No description provided for @codeUserNameLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Used by (Optional)'**
+  String get codeUserNameLabel;
+
+  /// No description provided for @codeSavedSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Code \"{code}\" saved.'**
+  String codeSavedSuccess(String code);
+
+  /// No description provided for @codeSaveFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to save code: {error}'**
+  String codeSaveFailed(String error);
+
+  /// No description provided for @copyCodeButtonText.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy Code'**
+  String get copyCodeButtonText;
+
+  /// No description provided for @copiedCodeMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Code copied to clipboard!'**
+  String get copiedCodeMessage;
+
+  /// No description provided for @codeUsagePageTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Use Code for {eventName}'**
+  String codeUsagePageTitle(String eventName);
+
+  /// No description provided for @noUsableCodesAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'No usable codes available for this event.'**
+  String get noUsableCodesAvailable;
+
+  /// No description provided for @qrCodeGenerationError.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to generate QR Code: {error}'**
+  String qrCodeGenerationError(String error);
+
+  /// No description provided for @markAsUsedButtonText.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark as Used'**
+  String get markAsUsedButtonText;
+
+  /// No description provided for @codeStatusUsed.
+  ///
+  /// In en, this message translates to:
+  /// **'Status: USED'**
+  String get codeStatusUsed;
+
+  /// No description provided for @codeStatusAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Status: AVAILABLE'**
+  String get codeStatusAvailable;
+
+  /// No description provided for @codeMarkedAsUsedSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Code \"{code}\" marked as used.'**
+  String codeMarkedAsUsedSuccess(String code);
+
+  /// No description provided for @codeMarkedAsUsedFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to mark code as used: {error}'**
+  String codeMarkedAsUsedFailed(Object error);
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
