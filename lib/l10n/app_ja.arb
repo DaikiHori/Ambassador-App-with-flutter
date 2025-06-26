@@ -1,0 +1,7 @@
+{
+    "@@locale": "ja",
+    "appTitle": "Ambassador App",
+    "eventListPageTitle": "イベント一覧",
+    "createEventMessage": "イベントを作成してください",
+    "addNewEventTooltip": "新しいイベントを追加"
+}

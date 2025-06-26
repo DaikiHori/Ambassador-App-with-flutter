@@ -1,0 +1,7 @@
+{
+    "@@locale": "en",
+    "appTitle": "Ambassador App",
+    "eventListPageTitle": "Event List",
+    "createEventMessage": "Please create an event.",
+    "addNewEventTooltip": "Add New Event"
+}
