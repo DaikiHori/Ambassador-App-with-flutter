@@ -1,0 +1,238 @@
+{
+    "@@locale": "ja",
+    "appTitle": "イベント管理アプリ",
+    "eventListPageTitle": "イベント一覧",
+    "createEventMessage": "イベントを作成してください",
+    "addNewEventTooltip": "新しいイベントを追加",
+    "addEventPageTitle": "新しいイベントを追加",          
+    "editEventPageTitle": "イベントを編集",            
+    "eventNameLabel": "イベント名",                    
+    "eventNameRequired": "イベント名は必須です",          
+    "eventDateLabel": "開催日",                      
+    "eventDateRequired": "開催日は必須です",             
+    "eventCodesLabel": "コード",                    
+    "eventCodesHint": "コードを改行またはカンマで区切って入力してください (例: CODE1, CODE2\\nCODE3)", 
+    "eventCodesRequired": "少なくとも1つのコードを入力してください。", 
+    "saveButtonText": "保存",                      
+    "eventSavedSuccess": "{eventName} とコードを保存しました！", 
+    "@eventSavedSuccess": {
+        "placeholders": {
+            "eventName": {
+                "type": "String"
+            }
+        }
+    },
+    "eventUpdatedSuccess": "{eventName} を更新しました！", 
+    "@eventUpdatedSuccess": {
+        "placeholders": {
+            "eventName": {
+                "type": "String"
+            }
+        }
+    },
+    "eventSaveFailed": "イベントの保存に失敗しました: {error}", 
+    "@eventSaveFailed": {
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "eventTotalCountLabel": "総コード数", 
+    "eventUsableCountLabel": "利用可能数", 
+    "menuTitle": "メニュー",
+    "eventUrlLabel": "イベントURL (任意)",
+    "eventUrlHint": "例: https://example.com/event",
+    "deleteButtonText": "削除",
+    "deleteConfirmTitle": "削除の確認",
+    "deleteEventMessage": "イベント「{eventName}」を削除してもよろしいですか？関連する全てのコードも削除されます。", 
+    "@deleteEventMessage": {
+        "placeholders": {
+            "eventName": {
+                "type": "String"
+            }
+        }
+    },
+    "eventDeletedSuccess": "イベント「{eventName}」と関連コードを削除しました。", 
+    "@eventDeletedSuccess": {
+        "placeholders": {
+            "eventName": {
+                "type": "String"
+            }
+        }
+    },
+    "eventDeleteFailed": "イベントの削除に失敗しました: {error}",
+    "cancelButtonText": "cancel",
+    "editButtonText": "編集",               
+    "codeListButtonText": "コード一覧",      
+    "codeButtonText": "コード",
+    "codeListPageTitle": "{eventName} のコード一覧",       
+    "@codeListPageTitle": {
+        "placeholders": {
+            "eventName": {
+                "type": "String"
+            }
+        }
+    },
+    "noCodesMessage": "このイベントにはコードがありません。", 
+    "codeNumberLabel": "No.",                          
+    "codeLabel": "コード",                               
+    "codeUsableLabel": "利用可能",                       
+    "codeUsedLabel": "使用済み",                         
+    "codeUserNameLabel": "使用ユーザー名 (任意)",         
+    "codeSavedSuccess": "コード「{code}」を保存しました。", 
+    "@codeSavedSuccess": {
+        "placeholders": {
+            "code": {
+                "type": "String"
+            }
+        }
+    },
+    "codeSaveFailed": "コードの保存に失敗しました: {error}", 
+    "@codeSaveFailed": {
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "copyCodeButtonText": "コードをコピー",              
+    "copiedCodeMessage": "コードをクリップボードにコピーしました！",
+    "codeUsagePageTitle": "{eventName} のコード利用",     
+    "@codeUsagePageTitle": {
+        "placeholders": {
+            "eventName": {
+                "type": "String"
+            }
+        }
+    },
+    "noUsableCodesAvailable": "このイベントには利用可能なコードがありません。", 
+    "qrCodeGenerationError": "QRコードの生成に失敗しました: {error}", 
+    "@qrCodeGenerationError": {
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "markAsUsedButtonText": "使用済みにする",               
+    "codeStatusUsed": "ステータス: 使用済み",             
+    "codeStatusAvailable": "ステータス: 利用可能",         
+    "codeMarkedAsUsedSuccess": "コード「{code}」を使用済みにしました。", 
+    "@codeMarkedAsUsedSuccess": {
+        "placeholders": {
+            "code": {
+                "type": "String"
+            }
+        }
+    },
+    "codeMarkedAsUsedFailed": "コードを使用済みにできませんでした: {error}",
+    "userListMenuText": "ユーザー管理",               
+    "addUserPageTitle": "ユーザー追加",                
+    "userListPageTitle": "ユーザー一覧",               
+    "userNameLabel": "ユーザー名",                    
+    "userNameHint": "ユーザー名を改行またはカンマで区切って入力してください。重複する名前はスキップされます。", 
+    "userNameRequired": "少なくとも1つのユーザー名を入力してください。", 
+    "usersSavedSuccess": "{count}人のユーザーを保存しました！", 
+    "@usersSavedSuccess": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "usersSavedWithSkip": "{count}人のユーザーを保存しました。スキップされた重複: {skippedNames}", 
+    "@usersSavedWithSkip": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            },
+            "skippedNames": {
+                "type": "String"
+            }
+        }
+    },
+    "usersSkippedAll": "入力されたユーザー名が全て重複していたためスキップされました: {skippedNames}", 
+    "@usersSkippedAll": {
+        "placeholders": {
+            "skippedNames": {
+                "type": "String"
+            }
+        }
+    },
+    "noUsersToSave": "保存するユーザーがいません。",         
+    "userSaveFailed": "ユーザーの保存に失敗しました: {error}", 
+    "@userSaveFailed": {
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "noUsersMessage": "ユーザーが登録されていません。ユーザーを追加してください。", 
+    "addUsersButtonTooltip": "新しいユーザーを追加",      
+    "deleteUserMessage": "ユーザー「{userName}」を削除してもよろしいですか？", 
+    "@deleteUserMessage": {
+        "placeholders": {
+            "userName": {
+                "type": "String"
+            }
+        }
+    },
+    "userDeletedSuccess": "ユーザー「{userName}」を削除しました。", 
+    "@userDeletedSuccess": {
+        "placeholders": {
+            "userName": {
+                "type": "String"
+            }
+        }
+    },
+    "userDeleteFailed": "ユーザーの削除に失敗しました: {error}",
+    "codeUserNameHint": "使用された場合はユーザー名を入力",
+    "loadCodeError": "コードの読み込みに失敗しました: {error}",
+    "loadEventFailed": "イベントの読み込みに失敗しました: {error}",
+    "exportDataMenuText": "データエクスポート (CSV)",           
+    "importDataMenuText": "データインポート (CSV)",           
+    "exportSelectLocationTitle": "エクスポート先の選択",         
+    "exportSuccessMessage": "データを以下のパスにエクスポートしました: {path}", 
+    "@exportSuccessMessage": {
+        "placeholders": {
+            "path": {
+                "type": "String"
+            }
+        }
+    },
+    "exportCancelledMessage": "データのエクスポートがキャンセルされました。", 
+    "exportFailedMessage": "データのエクスポートに失敗しました: {error}", 
+    "@exportFailedMessage": {
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "importSelectFileTitle": "インポートするCSVファイルの選択", 
+    "importSuccessMessage": "データを以下のファイルからインポートしました: {path}", 
+    "@importSuccessMessage": {
+        "placeholders": {
+            "path": {
+                "type": "String"
+            }
+        }
+    },
+    "importCancelledMessage": "データのインポートがキャンセルされました。", 
+    "importFailedMessage": "データのインポートに失敗しました: {error}",
+    "importConfirmTitle": "インポートの確認",
+    "importConfirmMessage": "既存のデータを全て削除し、新しいデータをインポートします。よろしいですか？",
+    "importConfirmButtonText": "インポート (既存削除)",
+    "importSummaryMessage": "{path} からインポートしました。\nイベント: {importedEvents}件, ユーザー: {importedUsers}人, コード: {importedCodes}個, スキップ: {skippedRows}行",
+    "@importSummaryMessage": {
+        "placeholders": {
+            "path": { "type": "String" },
+            "importedEvents": { "type": "int" },
+            "importedUsers": { "type": "int" },
+            "importedCodes": { "type": "int" },
+            "skippedRows": { "type": "int" }
+        }
+    }
+}

@@ -1,5 +1,5 @@
 name: ambassador_app_with_flutter
-description: "A new Flutter project."
+description: "QR code generation app for community ambassadors, flutter version"
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -30,7 +30,16 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  sqflite: ^2.4.2 # 最新の安定バージョン 2025/06/26時点
+  path_provider: ^2.1.5 # 最新の安定バージョン 2025/06/26時点
 
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.20.2
+  url_launcher: ^6.2.0
+  qr_flutter: ^4.1.0
+  file_picker: ^10.2.0
+  csv: ^6.0.0
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
@@ -38,7 +47,6 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
@@ -51,12 +59,13 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-
+  generate: true
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
-
+  assets: # <-- このセクションがあることを確認
+    - assets/images/app_icon.png
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg

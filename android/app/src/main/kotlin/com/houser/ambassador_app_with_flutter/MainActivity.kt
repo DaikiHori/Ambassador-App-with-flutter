@@ -1,4 +1,4 @@
-package com.example.ambassador_app_with_flutter
+package com.houser.ambassador_app_with_flutter
 
 import io.flutter.embedding.android.FlutterActivity
 

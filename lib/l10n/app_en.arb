@@ -1,0 +1,246 @@
+{
+    "@@locale": "en",
+    "appTitle": "Event Management App",
+    "eventListPageTitle": "Event List",
+    "createEventMessage": "Please create an event.",
+    "addNewEventTooltip": "Add New Event",
+    "addEventPageTitle": "Add New Event",          
+    "editEventPageTitle": "Edit Event",            
+    "eventNameLabel": "Event Name",                
+    "eventNameRequired": "Event Name cannot be empty", 
+    "eventDateLabel": "Date",                      
+    "eventDateRequired": "Date cannot be empty",   
+    "eventCodesLabel": "Codes",                    
+    "eventCodesHint": "Enter codes, separated by newlines or commas. (e.g., CODE1, CODE2\\nCODE3)", 
+    "eventCodesRequired": "Please enter at least one code.", 
+    "saveButtonText": "Save",                      
+    "eventSavedSuccess": "Event \"{eventName}\" and codes saved successfully!", 
+    "@eventSavedSuccess": {
+        "placeholders": {
+            "eventName": {
+                "type": "String"
+            }
+        }
+    },
+    "eventUpdatedSuccess": "Event \"{eventName}\" updated successfully!", 
+    "@eventUpdatedSuccess": {
+        "placeholders": {
+            "eventName": {
+                "type": "String"
+            }
+        }
+    },
+    "eventSaveFailed": "Failed to save event: {error}", 
+    "@eventSaveFailed": {
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "eventTotalCountLabel": "Total Codes", 
+    "eventUsableCountLabel": "Usable Codes", 
+    "menuTitle": "Menu" ,
+    "eventUrlLabel": "Event URL (Optional)",
+    "eventUrlHint": "e.g., https://example.com/event",
+    "deleteButtonText": "Delete",
+    "deleteConfirmTitle": "Confirm Deletion",
+    "deleteEventMessage": "Are you sure you want to delete event \"{eventName}\"? All associated codes will also be deleted.", 
+    "@deleteEventMessage": {
+        "placeholders": {
+            "eventName": {
+                "type": "String"
+            }
+        }
+    },
+    "eventDeletedSuccess": "Event \"{eventName}\" and its codes deleted successfully.", 
+    "@eventDeletedSuccess": {
+        "placeholders": {
+            "eventName": {
+                "type": "String"
+            }
+        }
+    },
+    "eventDeleteFailed": "Failed to delete event: {error}" ,
+    "cancelButtonText": "cancel",
+    "editButtonText": "Edit",               
+    "codeListButtonText": "Code List",      
+    "codeButtonText": "Code",
+    "codeListPageTitle": "Codes for {eventName}",       
+    "@codeListPageTitle": {
+        "placeholders": {
+            "eventName": {
+                "type": "String"
+            }
+        }
+    },
+    "noCodesMessage": "No codes found for this event.", 
+    "codeNumberLabel": "No.",                          
+    "codeLabel": "Code",                               
+    "codeUsableLabel": "Usable",                       
+    "codeUsedLabel": "Used",                           
+    "codeUserNameLabel": "Used by (Optional)",
+    "codeUserNameHint": "Enter name if used by someone",
+    "codeSavedSuccess": "Code \"{code}\" saved.",      
+    "@codeSavedSuccess": {
+        "placeholders": {
+            "code": {
+                "type": "String"
+            }
+        }
+    },
+    "codeSaveFailed": "Failed to save code: {error}",  
+    "@codeSaveFailed": {
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "copyCodeButtonText": "Copy Code",                 
+    "copiedCodeMessage": "Code copied to clipboard!",
+    "codeUsagePageTitle": "Use Code for {eventName}",     
+    "@codeUsagePageTitle": {
+        "placeholders": {
+            "eventName": {
+                "type": "String"
+            }
+        }
+    },
+    "noUsableCodesAvailable": "No usable codes available for this event.", 
+    "qrCodeGenerationError": "Failed to generate QR Code: {error}", 
+    "@qrCodeGenerationError": {
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "markAsUsedButtonText": "Mark as Used",               
+    "codeStatusUsed": "Status: USED",                     
+    "codeStatusAvailable": "Status: AVAILABLE",           
+    "codeMarkedAsUsedSuccess": "Code \"{code}\" marked as used.", 
+    "@codeMarkedAsUsedSuccess": {
+        "placeholders": {
+            "code": {
+                "type": "String"
+            }
+        }
+    },
+    "codeMarkedAsUsedFailed": "Failed to mark code as used: {error}",
+    "userListMenuText": "Manage Users",           
+    "addUserPageTitle": "Add Users",              
+    "userListPageTitle": "User List",             
+    "userNameLabel": "User Names",                
+    "userNameHint": "Enter user names, separated by newlines or commas. Duplicate names will be skipped.", 
+    "userNameRequired": "Please enter at least one user name.", 
+    "usersSavedSuccess": "{count} user(s) saved successfully!", 
+    "@usersSavedSuccess": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "usersSavedWithSkip": "{count} user(s) saved. Skipped duplicates: {skippedNames}", 
+    "@usersSavedWithSkip": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            },
+            "skippedNames": {
+                "type": "String"
+            }
+        }
+    },
+    "usersSkippedAll": "All entered user names were duplicates: {skippedNames}", 
+    "@usersSkippedAll": {
+        "placeholders": {
+            "skippedNames": {
+                "type": "String"
+            }
+        }
+    },
+    "noUsersToSave": "No users to save.",         
+    "userSaveFailed": "Failed to save users: {error}", 
+    "@userSaveFailed": {
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "noUsersMessage": "No users registered. Please add users.", 
+    "addUsersButtonTooltip": "Add New Users",      
+    "deleteUserMessage": "Are you sure you want to delete user \"{userName}\"?", 
+    "@deleteUserMessage": {
+        "placeholders": {
+            "userName": {
+                "type": "String"
+            }
+        }
+    },
+    "userDeletedSuccess": "User \"{userName}\" deleted successfully.", 
+    "@userDeletedSuccess": {
+        "placeholders": {
+            "userName": {
+                "type": "String"
+            }
+        }
+    },
+    "userDeleteFailed": "Failed to delete user: {error}",
+    "loadCodeError": "Failed to load code: {error}",
+    "loadEventFailed": "Failed to load event and code counts: {error}",
+    "exportDataMenuText": "Export Data (CSV)",           
+    "importDataMenuText": "Import Data (CSV)",           
+    "exportSelectLocationTitle": "Select Export Location", 
+    "exportSuccessMessage": "Data exported successfully to: {path}", 
+    "@exportSuccessMessage": {
+        "placeholders": {
+            "path": {
+                "type": "String"
+            }
+        }
+    },
+    "exportCancelledMessage": "Data export cancelled.",   
+    "exportFailedMessage": "Failed to export data: {error}", 
+    "@exportFailedMessage": {
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "importSelectFileTitle": "Select CSV File to Import", 
+    "importSuccessMessage": "Data imported successfully from: {path}", 
+    "@importSuccessMessage": {
+        "placeholders": {
+            "path": {
+                "type": "String"
+            }
+        }
+    },
+    "importCancelledMessage": "Data import cancelled.",   
+    "importFailedMessage": "Failed to import data: {error}", 
+    "@importFailedMessage": {
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "importSummaryMessage": "Imported from {path}.\nEvents: {importedEvents}, Users: {importedUsers}, Codes: {importedCodes}, Skipped: {skippedRows}",
+    "@importSummaryMessage": {
+        "placeholders": {
+            "path": { "type": "String" },
+            "importedEvents": { "type": "int" },
+            "importedUsers": { "type": "int" },
+            "importedCodes": { "type": "int" },
+            "skippedRows": { "type": "int" }
+        }
+    },
+    "importConfirmTitle": "Confirm Import",
+    "importConfirmMessage": "This will delete all existing data and import new data. Are you sure you want to proceed?",
+    "importConfirmButtonText": "Import (Delete Existing)"
+
+}
