@@ -190,5 +190,57 @@
     },
     "userDeleteFailed": "Failed to delete user: {error}",
     "loadCodeError": "Failed to load code: {error}",
-    "loadEventFailed": "Failed to load event and code counts: {error}"
+    "loadEventFailed": "Failed to load event and code counts: {error}",
+    "exportDataMenuText": "Export Data (CSV)",           
+    "importDataMenuText": "Import Data (CSV)",           
+    "exportSelectLocationTitle": "Select Export Location", 
+    "exportSuccessMessage": "Data exported successfully to: {path}", 
+    "@exportSuccessMessage": {
+        "placeholders": {
+            "path": {
+                "type": "String"
+            }
+        }
+    },
+    "exportCancelledMessage": "Data export cancelled.",   
+    "exportFailedMessage": "Failed to export data: {error}", 
+    "@exportFailedMessage": {
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "importSelectFileTitle": "Select CSV File to Import", 
+    "importSuccessMessage": "Data imported successfully from: {path}", 
+    "@importSuccessMessage": {
+        "placeholders": {
+            "path": {
+                "type": "String"
+            }
+        }
+    },
+    "importCancelledMessage": "Data import cancelled.",   
+    "importFailedMessage": "Failed to import data: {error}", 
+    "@importFailedMessage": {
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "importSummaryMessage": "Imported from {path}.\nEvents: {importedEvents}, Users: {importedUsers}, Codes: {importedCodes}, Skipped: {skippedRows}",
+    "@importSummaryMessage": {
+        "placeholders": {
+            "path": { "type": "String" },
+            "importedEvents": { "type": "int" },
+            "importedUsers": { "type": "int" },
+            "importedCodes": { "type": "int" },
+            "skippedRows": { "type": "int" }
+        }
+    },
+    "importConfirmTitle": "Confirm Import",
+    "importConfirmMessage": "This will delete all existing data and import new data. Are you sure you want to proceed?",
+    "importConfirmButtonText": "Import (Delete Existing)"
+
 }

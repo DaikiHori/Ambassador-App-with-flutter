@@ -1,15 +1,20 @@
 // lib/screens/event_list_page.dart
-
-import 'package:ambassador_app_with_flutter/screens/code_list_page.dart';
-import 'package:ambassador_app_with_flutter/screens/code_usage_page.dart';
-import 'package:ambassador_app_with_flutter/screens/user_list_page.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import '../db_helper.dart'; // DbHelperをインポート
-import '../l10n/app_localizations.dart';
-import '../models/event.dart'; // Eventモデルをインポート
+import '../db_helper.dart';
+import '../models/event.dart';
 import '../models/code.dart';
+import '../models/user.dart'; // Userモデルをインポート (エクスポート用)
+import 'package:ambassador_app_with_flutter/l10n/app_localizations.dart';
 import 'add_event_page.dart';
+import 'code_list_page.dart';
+import 'code_usage_page.dart';
+import 'user_list_page.dart';
+import 'package:intl/intl.dart';
+import 'package:file_picker/file_picker.dart';
+import 'dart:io';
+import 'dart:convert'; // UTF-8エンコーディングのために追加
+import 'dart:typed_data'; // Uint8Listのために追加 (通常はdart:ioかdart:typed_dataのインポートで利用可能)
+import 'package:csv/csv.dart'; // csvパッケージをインポート
 
 class EventListPage extends StatefulWidget {
   const EventListPage({super.key});
@@ -85,6 +90,295 @@ class _EventListPageState extends State<EventListPage> {
     }
   }
 
+  // CSVコンテンツを生成するヘルパー関数
+  String _generateCsvContent(List<Event> events, List<User> users, List<Code> codes) {
+    List<List<dynamic>> csvData = [];
+
+    // Eventsテーブルのデータ
+    csvData.add(['table', 'events']);
+    csvData.add(['id', 'name', 'date', 'url', 'count', 'usable_count']);
+    for (var event in events) {
+      csvData.add([
+        event.id,
+        event.name,
+        event.date.toIso8601String(), // DateTimeはISO 8601文字列で保存
+        event.url ?? '', // nullの場合は空文字列
+        event.count,
+        event.usableCount,
+      ]);
+    }
+    csvData.add([]); // 1行空ける
+
+    // Usersテーブルのデータ
+    csvData.add(['table', 'users']);
+    csvData.add(['id', 'name']);
+    for (var user in users) {
+      csvData.add([
+        user.id,
+        user.name,
+      ]);
+    }
+    csvData.add([]); // 1行空ける
+
+    // Codesテーブルのデータ
+    csvData.add(['table', 'codes']);
+    csvData.add(['id', 'number', 'event_id', 'code', 'usable', 'used', 'user_name']);
+    for (var code in codes) {
+      csvData.add([
+        code.id,
+        code.number,
+        code.eventId,
+        code.code,
+        code.usable,
+        code.used,
+        code.userName ?? '', // nullの場合は空文字列
+      ]);
+    }
+
+    const converter = ListToCsvConverter(); // CSV変換器のインスタンス
+    return converter.convert(csvData); // CSVデータを文字列に変換して返す
+  }
+
+  // エクスポート機能
+  Future<void> _exportData() async {
+    final localizations = AppLocalizations.of(context)!;
+    try {
+      // 全テーブルのデータを取得
+      final events = await DbHelper.instance.getEvents();
+      final users = await DbHelper.instance.getUsers();
+      final codes = await DbHelper.instance.getCodes();
+
+      // CSVコンテンツを生成
+      String csvContent = _generateCsvContent(events, users, codes);
+
+      // StringをUint8List（バイトデータ）に変換 (UTF-8エンコーディング)
+      final List<int> bytes = utf8.encode(csvContent);
+      final Uint8List data = Uint8List.fromList(bytes);
+
+      // 保存先ファイルの選択ダイアログを表示し、バイトデータを渡す
+      String? outputPath = await FilePicker.platform.saveFile(
+        type: FileType.custom,
+        allowedExtensions: ['csv'],
+        dialogTitle: localizations.exportSelectLocationTitle,
+        fileName: 'event_data_${DateFormat('yyyyMMdd_HHmmss').format(DateTime.now())}.csv',
+        bytes: data!,
+      );
+
+      if (outputPath != null) {
+        if (!mounted) return;
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(localizations.exportSuccessMessage(outputPath))),
+        );
+      } else {
+        // ユーザーがキャンセルした場合
+        if (!mounted) return;
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(localizations.exportCancelledMessage)),
+        );
+      }
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(localizations.exportFailedMessage(e.toString()))),
+      );
+    }
+  }
+
+  // MARK: - インポート機能
+
+  Future<void> _importData() async {
+    final localizations = AppLocalizations.of(context)!;
+    try {
+      // CSVファイルを選択するダイアログを表示
+      FilePickerResult? result = await FilePicker.platform.pickFiles(
+        type: FileType.custom,
+        allowedExtensions: ['csv'],
+        allowMultiple: false, // 複数ファイル選択を許可しない
+        dialogTitle: localizations.importSelectFileTitle,
+      );
+
+      if (result != null && result.files.single.path != null) {
+        String filePath = result.files.single.path!;
+
+        // 既存データ削除の確認アラート
+        final bool? confirmImport = await showDialog<bool>(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text(localizations.importConfirmTitle),
+              content: Text(localizations.importConfirmMessage),
+              actions: <Widget>[
+                TextButton(
+                  onPressed: () => Navigator.of(context).pop(false), // キャンセル
+                  child: Text(localizations.cancelButtonText),
+                ),
+                TextButton(
+                  onPressed: () => Navigator.of(context).pop(true), // OK (削除してインポート)
+                  child: Text(localizations.importConfirmButtonText),
+                ),
+              ],
+            );
+          },
+        );
+
+        if (confirmImport != true) {
+          if (!mounted) return;
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(localizations.importCancelledMessage)),
+          );
+          return; // ユーザーがキャンセルした場合、ここで処理を中断
+        }
+
+        // ユーザーがOKを選択した場合、既存の全テーブルをクリア
+        await DbHelper.instance.clearAllTables();
+
+        final File file = File(filePath);
+        String csvContent = await file.readAsString();
+
+        // CSVコンテンツを解析
+        final List<List<dynamic>> rows = const CsvToListConverter().convert(csvContent);
+
+        String? currentTable;
+        List<String>? currentHeaders;
+
+        // CSVの旧IDからSQLiteの新規IDへのマッピング
+        final Map<int, int> oldEventIdToNewEventId = {};
+        final Map<int, int> oldUserIdToNewUserId = {}; // 将来的なユーザーデータインポートの拡張性
+
+        int importedEvents = 0;
+        int importedUsers = 0;
+        int importedCodes = 0;
+        int skippedRows = 0; // スキップされた行数をカウント
+
+        for (int i = 0; i < rows.length; i++) {
+          final row = rows[i];
+
+          // 空の行はテーブル区切りと判断
+          if (row.isEmpty || (row.length == 1 && row[0].toString().trim().isEmpty)) {
+            currentTable = null; // テーブルコンテキストをリセット
+            currentHeaders = null; // ヘッダーをリセット
+            continue; // 次の行へ
+          }
+
+          // 最初の要素が 'table' であればテーブル名行
+          if (row.length >= 2 && row[0] == 'table') {
+            currentTable = row[1].toString();
+            currentHeaders = null; // ヘッダーをリセット
+          } else if (currentTable != null && currentHeaders == null) {
+            // テーブル名の次の行はヘッダー行
+            currentHeaders = row.map((e) => e.toString()).toList();
+          } else if (currentTable != null && currentHeaders != null) {
+            // ヘッダーの次の行からデータ行
+            final Map<String, dynamic> rowMap = {};
+            for (int j = 0; j < currentHeaders!.length; j++) {
+              if (j < row.length) {
+                // CSVパーサーが数字をint/doubleで返す場合があるので、toString()で一貫させる
+                rowMap[currentHeaders[j]] = row[j];
+              } else {
+                rowMap[currentHeaders[j]] = null; // カラムが不足している場合はnull
+              }
+            }
+
+            // 各テーブルのデータに応じて処理
+            try {
+              switch (currentTable) {
+                case 'events':
+                  final oldId = int.tryParse(rowMap['id'].toString());
+                  final newEvent = Event(
+                    // idはSQLiteに自動生成させるため、ここではnull
+                    name: rowMap['name'].toString(),
+                    date: DateTime.parse(rowMap['date'].toString()),
+                    url: rowMap['url']?.toString().isEmpty == true ? null : rowMap['url'].toString(),
+                    count: int.tryParse(rowMap['count'].toString()) ?? 0,
+                    usableCount: int.tryParse(rowMap['usable_count'].toString()) ?? 0,
+                  );
+                  final newId = await DbHelper.instance.insertEvent(newEvent);
+                  if (oldId != null) {
+                    oldEventIdToNewEventId[oldId] = newId; // 旧IDと新IDのマッピングを保存
+                  }
+                  importedEvents++;
+                  break;
+                case 'users':
+                // usersテーブルはUNIQUE制約があるため、insertUserのconflictAlgorithm.ignoreで重複はスキップされる
+                  final oldId = int.tryParse(rowMap['id'].toString());
+                  final newUser = User(
+                    // idはSQLiteに自動生成させるため、ここではnull
+                    name: rowMap['name'].toString(),
+                  );
+                  final newId = await DbHelper.instance.insertUser(newUser); // ignoreにより重複はスキップされる
+                  if (newId != 0 && oldId != null) { // insertUserが0を返す場合、スキップされたことを意味する
+                    oldUserIdToNewUserId[oldId] = newId; // 旧IDと新IDのマッピングを保存
+                  } else if (newId == 0) {
+                    skippedRows++; // スキップされたユーザーをカウント
+                  }
+                  importedUsers++; // insertUserが0を返しても、一応インポート試行数としてカウント
+                  break;
+                case 'codes':
+                  final oldEventId = int.tryParse(rowMap['event_id'].toString());
+                  // event_idがマッピングテーブルに存在するか確認
+                  final newMappedEventId = (oldEventId != null && oldEventIdToNewEventId.containsKey(oldEventId))
+                      ? oldEventIdToNewEventId[oldEventId]!
+                      : null;
+
+                  if (newMappedEventId == null) {
+                    skippedRows++;
+                    continue; // マッピングできない場合はこのコードをスキップ
+                  }
+
+                  final newCode = Code(
+                    // idはSQLiteに自動生成させるため、ここではnull
+                    number: int.tryParse(rowMap['number'].toString()) ?? 0,
+                    eventId: newMappedEventId, // マッピングされた新しいeventIdを使用
+                    code: rowMap['code'].toString(),
+                    usable: int.tryParse(rowMap['usable'].toString()) ?? 1,
+                    used: int.tryParse(rowMap['used'].toString()) ?? 0,
+                    userName: rowMap['user_name']?.toString().isEmpty == true ? null : rowMap['user_name'].toString(),
+                  );
+                  await DbHelper.instance.insertCode(newCode);
+                  importedCodes++;
+                  break;
+                default:
+                  skippedRows++;
+              }
+            } catch (e) {
+              skippedRows++;
+            }
+          }
+        }
+
+        if (!mounted) return;
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              localizations.importSummaryMessage(
+                filePath,
+                importedEvents,
+                importedUsers,
+                importedCodes,
+                skippedRows,
+              ),
+            ),
+            duration: const Duration(seconds: 5), // 長めに表示
+          ),
+        );
+        await _loadEvents(); // インポート後、イベントリストを再ロードしてUIを更新
+      } else {
+        // ユーザーがキャンセルした場合、またはファイルが選択されなかった場合
+        if (!mounted) return;
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(localizations.importCancelledMessage)),
+        );
+      }
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(localizations.importFailedMessage(e.toString()))),
+      );
+    }
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
     final localizations = AppLocalizations.of(context)!;
@@ -132,6 +426,26 @@ class _EventListPageState extends State<EventListPage> {
                   context,
                   MaterialPageRoute(builder: (context) => const UserListPage()),
                 );
+              },
+            ),
+            const Divider(), // 区切り線
+
+            // データエクスポート機能を追加
+            ListTile(
+              leading: const Icon(Icons.download),
+              title: Text(localizations.exportDataMenuText), // 新しい多言語キー
+              onTap: () {
+                Navigator.pop(context); // ドロワーを閉じる
+                _exportData(); // エクスポート処理を呼び出す
+              },
+            ),
+            // データインポート機能を追加
+            ListTile(
+              leading: const Icon(Icons.upload_file),
+              title: Text(localizations.importDataMenuText), // 新しい多言語キー
+              onTap: () {
+                Navigator.pop(context); // ドロワーを閉じる
+                _importData(); // インポート処理を呼び出す
               },
             ),
             // その他のメニュー項目をここに追加

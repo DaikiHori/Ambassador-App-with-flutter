@@ -190,5 +190,49 @@
     "userDeleteFailed": "ユーザーの削除に失敗しました: {error}",
     "codeUserNameHint": "使用された場合はユーザー名を入力",
     "loadCodeError": "コードの読み込みに失敗しました: {error}",
-    "loadEventFailed": "Failed to load event and code counts: {error}"
+    "loadEventFailed": "イベントの読み込みに失敗しました: {error}",
+    "exportDataMenuText": "データエクスポート (CSV)",           
+    "importDataMenuText": "データインポート (CSV)",           
+    "exportSelectLocationTitle": "エクスポート先の選択",         
+    "exportSuccessMessage": "データを以下のパスにエクスポートしました: {path}", 
+    "@exportSuccessMessage": {
+        "placeholders": {
+            "path": {
+                "type": "String"
+            }
+        }
+    },
+    "exportCancelledMessage": "データのエクスポートがキャンセルされました。", 
+    "exportFailedMessage": "データのエクスポートに失敗しました: {error}", 
+    "@exportFailedMessage": {
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "importSelectFileTitle": "インポートするCSVファイルの選択", 
+    "importSuccessMessage": "データを以下のファイルからインポートしました: {path}", 
+    "@importSuccessMessage": {
+        "placeholders": {
+            "path": {
+                "type": "String"
+            }
+        }
+    },
+    "importCancelledMessage": "データのインポートがキャンセルされました。", 
+    "importFailedMessage": "データのインポートに失敗しました: {error}",
+    "importConfirmTitle": "インポートの確認",
+    "importConfirmMessage": "既存のデータを全て削除し、新しいデータをインポートします。よろしいですか？",
+    "importConfirmButtonText": "インポート (既存削除)",
+    "importSummaryMessage": "{path} からインポートしました。\nイベント: {importedEvents}件, ユーザー: {importedUsers}人, コード: {importedCodes}個, スキップ: {skippedRows}行",
+    "@importSummaryMessage": {
+        "placeholders": {
+            "path": { "type": "String" },
+            "importedEvents": { "type": "int" },
+            "importedUsers": { "type": "int" },
+            "importedCodes": { "type": "int" },
+            "skippedRows": { "type": "int" }
+        }
+    }
 }

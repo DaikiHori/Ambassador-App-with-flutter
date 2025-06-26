@@ -239,7 +239,16 @@ class DbHelper {
       whereArgs: [id],
     );
   }
-  
+
+  Future<void> clearAllTables() async {
+    final db = await instance.database;
+    await db.transaction((txn) async {
+      // 外部キー制約があるため、依存関係の順に削除
+      await txn.delete('codes');
+      await txn.delete('events');
+      await txn.delete('users');
+    });
+  }
   Future<void> close() async {
     final db = await database;
     await db.close();

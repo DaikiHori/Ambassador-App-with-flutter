@@ -258,4 +258,56 @@ class AppLocalizationsEn extends AppLocalizations {
   String loadEventFailed(Object error) {
     return 'Failed to load event and code counts: $error';
   }
+
+  @override
+  String get exportDataMenuText => 'Export Data (CSV)';
+
+  @override
+  String get importDataMenuText => 'Import Data (CSV)';
+
+  @override
+  String get exportSelectLocationTitle => 'Select Export Location';
+
+  @override
+  String exportSuccessMessage(String path) {
+    return 'Data exported successfully to: $path';
+  }
+
+  @override
+  String get exportCancelledMessage => 'Data export cancelled.';
+
+  @override
+  String exportFailedMessage(String error) {
+    return 'Failed to export data: $error';
+  }
+
+  @override
+  String get importSelectFileTitle => 'Select CSV File to Import';
+
+  @override
+  String importSuccessMessage(String path) {
+    return 'Data imported successfully from: $path';
+  }
+
+  @override
+  String get importCancelledMessage => 'Data import cancelled.';
+
+  @override
+  String importFailedMessage(String error) {
+    return 'Failed to import data: $error';
+  }
+
+  @override
+  String importSummaryMessage(String path, int importedEvents, int importedUsers, int importedCodes, int skippedRows) {
+    return 'Imported from $path.\nEvents: $importedEvents, Users: $importedUsers, Codes: $importedCodes, Skipped: $skippedRows';
+  }
+
+  @override
+  String get importConfirmTitle => 'Confirm Import';
+
+  @override
+  String get importConfirmMessage => 'This will delete all existing data and import new data. Are you sure you want to proceed?';
+
+  @override
+  String get importConfirmButtonText => 'Import (Delete Existing)';
 }

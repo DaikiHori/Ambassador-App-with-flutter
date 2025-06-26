@@ -256,6 +256,58 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String loadEventFailed(Object error) {
-    return 'Failed to load event and code counts: $error';
+    return 'イベントの読み込みに失敗しました: $error';
   }
+
+  @override
+  String get exportDataMenuText => 'データエクスポート (CSV)';
+
+  @override
+  String get importDataMenuText => 'データインポート (CSV)';
+
+  @override
+  String get exportSelectLocationTitle => 'エクスポート先の選択';
+
+  @override
+  String exportSuccessMessage(String path) {
+    return 'データを以下のパスにエクスポートしました: $path';
+  }
+
+  @override
+  String get exportCancelledMessage => 'データのエクスポートがキャンセルされました。';
+
+  @override
+  String exportFailedMessage(String error) {
+    return 'データのエクスポートに失敗しました: $error';
+  }
+
+  @override
+  String get importSelectFileTitle => 'インポートするCSVファイルの選択';
+
+  @override
+  String importSuccessMessage(String path) {
+    return 'データを以下のファイルからインポートしました: $path';
+  }
+
+  @override
+  String get importCancelledMessage => 'データのインポートがキャンセルされました。';
+
+  @override
+  String importFailedMessage(String error) {
+    return 'データのインポートに失敗しました: $error';
+  }
+
+  @override
+  String importSummaryMessage(String path, int importedEvents, int importedUsers, int importedCodes, int skippedRows) {
+    return '$path からインポートしました。\nイベント: $importedEvents件, ユーザー: $importedUsers人, コード: $importedCodes個, スキップ: $skippedRows行';
+  }
+
+  @override
+  String get importConfirmTitle => 'インポートの確認';
+
+  @override
+  String get importConfirmMessage => '既存のデータを全て削除し、新しいデータをインポートします。よろしいですか？';
+
+  @override
+  String get importConfirmButtonText => 'インポート (既存削除)';
 }

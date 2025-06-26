@@ -508,6 +508,90 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Failed to load event and code counts: {error}'**
   String loadEventFailed(Object error);
+
+  /// No description provided for @exportDataMenuText.
+  ///
+  /// In en, this message translates to:
+  /// **'Export Data (CSV)'**
+  String get exportDataMenuText;
+
+  /// No description provided for @importDataMenuText.
+  ///
+  /// In en, this message translates to:
+  /// **'Import Data (CSV)'**
+  String get importDataMenuText;
+
+  /// No description provided for @exportSelectLocationTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Export Location'**
+  String get exportSelectLocationTitle;
+
+  /// No description provided for @exportSuccessMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Data exported successfully to: {path}'**
+  String exportSuccessMessage(String path);
+
+  /// No description provided for @exportCancelledMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Data export cancelled.'**
+  String get exportCancelledMessage;
+
+  /// No description provided for @exportFailedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to export data: {error}'**
+  String exportFailedMessage(String error);
+
+  /// No description provided for @importSelectFileTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Select CSV File to Import'**
+  String get importSelectFileTitle;
+
+  /// No description provided for @importSuccessMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Data imported successfully from: {path}'**
+  String importSuccessMessage(String path);
+
+  /// No description provided for @importCancelledMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Data import cancelled.'**
+  String get importCancelledMessage;
+
+  /// No description provided for @importFailedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to import data: {error}'**
+  String importFailedMessage(String error);
+
+  /// No description provided for @importSummaryMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Imported from {path}.\nEvents: {importedEvents}, Users: {importedUsers}, Codes: {importedCodes}, Skipped: {skippedRows}'**
+  String importSummaryMessage(String path, int importedEvents, int importedUsers, int importedCodes, int skippedRows);
+
+  /// No description provided for @importConfirmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Import'**
+  String get importConfirmTitle;
+
+  /// No description provided for @importConfirmMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'This will delete all existing data and import new data. Are you sure you want to proceed?'**
+  String get importConfirmMessage;
+
+  /// No description provided for @importConfirmButtonText.
+  ///
+  /// In en, this message translates to:
+  /// **'Import (Delete Existing)'**
+  String get importConfirmButtonText;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
