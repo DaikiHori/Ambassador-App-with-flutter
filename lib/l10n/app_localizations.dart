@@ -323,6 +323,12 @@ abstract class AppLocalizations {
   /// **'Used by (Optional)'**
   String get codeUserNameLabel;
 
+  /// No description provided for @codeUserNameHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter name if used by someone'**
+  String get codeUserNameHint;
+
   /// No description provided for @codeSavedSuccess.
   ///
   /// In en, this message translates to:
@@ -394,6 +400,114 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Failed to mark code as used: {error}'**
   String codeMarkedAsUsedFailed(Object error);
+
+  /// No description provided for @userListMenuText.
+  ///
+  /// In en, this message translates to:
+  /// **'Manage Users'**
+  String get userListMenuText;
+
+  /// No description provided for @addUserPageTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Users'**
+  String get addUserPageTitle;
+
+  /// No description provided for @userListPageTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'User List'**
+  String get userListPageTitle;
+
+  /// No description provided for @userNameLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'User Names'**
+  String get userNameLabel;
+
+  /// No description provided for @userNameHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter user names, separated by newlines or commas. Duplicate names will be skipped.'**
+  String get userNameHint;
+
+  /// No description provided for @userNameRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter at least one user name.'**
+  String get userNameRequired;
+
+  /// No description provided for @usersSavedSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} user(s) saved successfully!'**
+  String usersSavedSuccess(int count);
+
+  /// No description provided for @usersSavedWithSkip.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} user(s) saved. Skipped duplicates: {skippedNames}'**
+  String usersSavedWithSkip(int count, String skippedNames);
+
+  /// No description provided for @usersSkippedAll.
+  ///
+  /// In en, this message translates to:
+  /// **'All entered user names were duplicates: {skippedNames}'**
+  String usersSkippedAll(String skippedNames);
+
+  /// No description provided for @noUsersToSave.
+  ///
+  /// In en, this message translates to:
+  /// **'No users to save.'**
+  String get noUsersToSave;
+
+  /// No description provided for @userSaveFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to save users: {error}'**
+  String userSaveFailed(String error);
+
+  /// No description provided for @noUsersMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'No users registered. Please add users.'**
+  String get noUsersMessage;
+
+  /// No description provided for @addUsersButtonTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Add New Users'**
+  String get addUsersButtonTooltip;
+
+  /// No description provided for @deleteUserMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to delete user \"{userName}\"?'**
+  String deleteUserMessage(String userName);
+
+  /// No description provided for @userDeletedSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'User \"{userName}\" deleted successfully.'**
+  String userDeletedSuccess(String userName);
+
+  /// No description provided for @userDeleteFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to delete user: {error}'**
+  String userDeleteFailed(Object error);
+
+  /// No description provided for @loadCodeError.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to load code: {error}'**
+  String loadCodeError(Object error);
+
+  /// No description provided for @loadEventFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to load event and code counts: {error}'**
+  String loadEventFailed(Object error);
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

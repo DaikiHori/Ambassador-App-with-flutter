@@ -137,6 +137,9 @@ class AppLocalizationsJa extends AppLocalizations {
   String get codeUserNameLabel => '使用ユーザー名 (任意)';
 
   @override
+  String get codeUserNameHint => '使用された場合はユーザー名を入力';
+
+  @override
   String codeSavedSuccess(String code) {
     return 'コード「$code」を保存しました。';
   }
@@ -182,5 +185,77 @@ class AppLocalizationsJa extends AppLocalizations {
   @override
   String codeMarkedAsUsedFailed(Object error) {
     return 'コードを使用済みにできませんでした: $error';
+  }
+
+  @override
+  String get userListMenuText => 'ユーザー管理';
+
+  @override
+  String get addUserPageTitle => 'ユーザー追加';
+
+  @override
+  String get userListPageTitle => 'ユーザー一覧';
+
+  @override
+  String get userNameLabel => 'ユーザー名';
+
+  @override
+  String get userNameHint => 'ユーザー名を改行またはカンマで区切って入力してください。重複する名前はスキップされます。';
+
+  @override
+  String get userNameRequired => '少なくとも1つのユーザー名を入力してください。';
+
+  @override
+  String usersSavedSuccess(int count) {
+    return '$count人のユーザーを保存しました！';
+  }
+
+  @override
+  String usersSavedWithSkip(int count, String skippedNames) {
+    return '$count人のユーザーを保存しました。スキップされた重複: $skippedNames';
+  }
+
+  @override
+  String usersSkippedAll(String skippedNames) {
+    return '入力されたユーザー名が全て重複していたためスキップされました: $skippedNames';
+  }
+
+  @override
+  String get noUsersToSave => '保存するユーザーがいません。';
+
+  @override
+  String userSaveFailed(String error) {
+    return 'ユーザーの保存に失敗しました: $error';
+  }
+
+  @override
+  String get noUsersMessage => 'ユーザーが登録されていません。ユーザーを追加してください。';
+
+  @override
+  String get addUsersButtonTooltip => '新しいユーザーを追加';
+
+  @override
+  String deleteUserMessage(String userName) {
+    return 'ユーザー「$userName」を削除してもよろしいですか？';
+  }
+
+  @override
+  String userDeletedSuccess(String userName) {
+    return 'ユーザー「$userName」を削除しました。';
+  }
+
+  @override
+  String userDeleteFailed(Object error) {
+    return 'ユーザーの削除に失敗しました: $error';
+  }
+
+  @override
+  String loadCodeError(Object error) {
+    return 'コードの読み込みに失敗しました: $error';
+  }
+
+  @override
+  String loadEventFailed(Object error) {
+    return 'Failed to load event and code counts: $error';
   }
 }

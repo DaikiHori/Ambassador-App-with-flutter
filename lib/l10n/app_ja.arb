@@ -126,5 +126,69 @@
             }
         }
     },
-    "codeMarkedAsUsedFailed": "コードを使用済みにできませんでした: {error}"
+    "codeMarkedAsUsedFailed": "コードを使用済みにできませんでした: {error}",
+    "userListMenuText": "ユーザー管理",               
+    "addUserPageTitle": "ユーザー追加",                
+    "userListPageTitle": "ユーザー一覧",               
+    "userNameLabel": "ユーザー名",                    
+    "userNameHint": "ユーザー名を改行またはカンマで区切って入力してください。重複する名前はスキップされます。", 
+    "userNameRequired": "少なくとも1つのユーザー名を入力してください。", 
+    "usersSavedSuccess": "{count}人のユーザーを保存しました！", 
+    "@usersSavedSuccess": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "usersSavedWithSkip": "{count}人のユーザーを保存しました。スキップされた重複: {skippedNames}", 
+    "@usersSavedWithSkip": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            },
+            "skippedNames": {
+                "type": "String"
+            }
+        }
+    },
+    "usersSkippedAll": "入力されたユーザー名が全て重複していたためスキップされました: {skippedNames}", 
+    "@usersSkippedAll": {
+        "placeholders": {
+            "skippedNames": {
+                "type": "String"
+            }
+        }
+    },
+    "noUsersToSave": "保存するユーザーがいません。",         
+    "userSaveFailed": "ユーザーの保存に失敗しました: {error}", 
+    "@userSaveFailed": {
+        "placeholders": {
+            "error": {
+                "type": "String"
+            }
+        }
+    },
+    "noUsersMessage": "ユーザーが登録されていません。ユーザーを追加してください。", 
+    "addUsersButtonTooltip": "新しいユーザーを追加",      
+    "deleteUserMessage": "ユーザー「{userName}」を削除してもよろしいですか？", 
+    "@deleteUserMessage": {
+        "placeholders": {
+            "userName": {
+                "type": "String"
+            }
+        }
+    },
+    "userDeletedSuccess": "ユーザー「{userName}」を削除しました。", 
+    "@userDeletedSuccess": {
+        "placeholders": {
+            "userName": {
+                "type": "String"
+            }
+        }
+    },
+    "userDeleteFailed": "ユーザーの削除に失敗しました: {error}",
+    "codeUserNameHint": "使用された場合はユーザー名を入力",
+    "loadCodeError": "コードの読み込みに失敗しました: {error}",
+    "loadEventFailed": "Failed to load event and code counts: {error}"
 }

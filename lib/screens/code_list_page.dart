@@ -60,16 +60,14 @@ class _CodeListPageState extends State<CodeListPage> {
         _codes = loadedCodes; // 取得したリストを更新
         _isLoading = false; // ロード完了
       });
-      print('イベントID ${widget.eventId} のコードがロードされました。件数: ${_codes.length}'); // デバッグログ
     } catch (e) {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('コードのロードに失敗しました: $e')),
+        SnackBar(content: Text(AppLocalizations.of(context)!.loadCodeError(e.toString()))),
       );
       setState(() {
         _isLoading = false; // ロード完了（エラー時も）
       });
-      print('コードのロードに失敗しました: $e'); // デバッグログ
     }
   }
 

@@ -137,6 +137,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get codeUserNameLabel => 'Used by (Optional)';
 
   @override
+  String get codeUserNameHint => 'Enter name if used by someone';
+
+  @override
   String codeSavedSuccess(String code) {
     return 'Code \"$code\" saved.';
   }
@@ -182,5 +185,77 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String codeMarkedAsUsedFailed(Object error) {
     return 'Failed to mark code as used: $error';
+  }
+
+  @override
+  String get userListMenuText => 'Manage Users';
+
+  @override
+  String get addUserPageTitle => 'Add Users';
+
+  @override
+  String get userListPageTitle => 'User List';
+
+  @override
+  String get userNameLabel => 'User Names';
+
+  @override
+  String get userNameHint => 'Enter user names, separated by newlines or commas. Duplicate names will be skipped.';
+
+  @override
+  String get userNameRequired => 'Please enter at least one user name.';
+
+  @override
+  String usersSavedSuccess(int count) {
+    return '$count user(s) saved successfully!';
+  }
+
+  @override
+  String usersSavedWithSkip(int count, String skippedNames) {
+    return '$count user(s) saved. Skipped duplicates: $skippedNames';
+  }
+
+  @override
+  String usersSkippedAll(String skippedNames) {
+    return 'All entered user names were duplicates: $skippedNames';
+  }
+
+  @override
+  String get noUsersToSave => 'No users to save.';
+
+  @override
+  String userSaveFailed(String error) {
+    return 'Failed to save users: $error';
+  }
+
+  @override
+  String get noUsersMessage => 'No users registered. Please add users.';
+
+  @override
+  String get addUsersButtonTooltip => 'Add New Users';
+
+  @override
+  String deleteUserMessage(String userName) {
+    return 'Are you sure you want to delete user \"$userName\"?';
+  }
+
+  @override
+  String userDeletedSuccess(String userName) {
+    return 'User \"$userName\" deleted successfully.';
+  }
+
+  @override
+  String userDeleteFailed(Object error) {
+    return 'Failed to delete user: $error';
+  }
+
+  @override
+  String loadCodeError(Object error) {
+    return 'Failed to load code: $error';
+  }
+
+  @override
+  String loadEventFailed(Object error) {
+    return 'Failed to load event and code counts: $error';
   }
 }

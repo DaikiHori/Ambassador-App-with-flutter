@@ -76,7 +76,6 @@ class DbHelper {
       )
     ''');
 
-    print('新しいデータベーステーブルが作成されました。'); // デバッグ用ログ
   }
 
   // データベースアップグレード時の処理
@@ -86,7 +85,6 @@ class DbHelper {
     // if (oldVersion < 2) {
     //   await db.execute("ALTER TABLE events ADD COLUMN new_event_column TEXT;");
     // }
-    print('データベースがアップグレードされました。Old Version: $oldVersion, New Version: $newVersion'); // デバッグ用ログ
   }
 
   // MARK: - EventsテーブルのCRUD操作

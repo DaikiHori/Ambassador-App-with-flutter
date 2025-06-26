@@ -1,6 +1,8 @@
 // lib/screens/event_list_page.dart
 
 import 'package:ambassador_app_with_flutter/screens/code_list_page.dart';
+import 'package:ambassador_app_with_flutter/screens/code_usage_page.dart';
+import 'package:ambassador_app_with_flutter/screens/user_list_page.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../db_helper.dart'; // DbHelperをインポート
@@ -72,16 +74,14 @@ class _EventListPageState extends State<EventListPage> {
         _eventDisplayDataList = tempDisplayDataList; // 表示用リストを更新
         _isLoading = false;
       });
-      print('イベントとコードのカウントがロードされました。件数: ${_eventDisplayDataList.length}');
     } catch (e) {
       if (!mounted) return;
       ScaffoldMessenger.of(
         context,
-      ).showSnackBar(SnackBar(content: Text('イベントとコードのカウントのロードに失敗しました: $e')));
+      ).showSnackBar(SnackBar(content: Text(AppLocalizations.of(context)!.loadEventFailed(e.toString()))));
       setState(() {
         _isLoading = false;
       });
-      print('イベントとコードのカウントのロードに失敗しました: $e');
     }
   }
 
@@ -106,29 +106,35 @@ class _EventListPageState extends State<EventListPage> {
         ],
       ),
       endDrawer: Drawer(
-        // 右側ドロワーの定義
-        // 後でメニューの中身をここに実装します
         child: ListView(
           padding: EdgeInsets.zero,
-          children: const <Widget>[
+          children: <Widget>[
             DrawerHeader(
               decoration: BoxDecoration(
-                color: Colors.blue, // ドロワーヘッダーの背景色
+                color: Theme.of(context).primaryColor,
               ),
               child: Text(
-                'メニュー', // ドロワーヘッダーのテキスト
-                style: TextStyle(color: Colors.white, fontSize: 24),
+                localizations.menuTitle,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                ),
               ),
             ),
-            // ここにメニュー項目を追加します（例：ListTileなど）
-            // ListTile(
-            //   leading: Icon(Icons.settings),
-            //   title: Text('設定'),
-            //   onTap: () {
-            //     // 設定画面へ遷移
-            //     Navigator.pop(context); // ドロワーを閉じる
-            //   },
-            // ),
+            // UserListPageへのナビゲーションリンクを追加
+            ListTile(
+              leading: const Icon(Icons.people),
+              title: Text(localizations.userListMenuText),
+              onTap: () async {
+                Navigator.pop(context); // ドロワーを閉じる
+                // UserListPageへの遷移
+                await Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const UserListPage()),
+                );
+              },
+            ),
+            // その他のメニュー項目をここに追加
           ],
         ),
       ),
@@ -174,17 +180,6 @@ class _EventListPageState extends State<EventListPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text('${localizations.eventDateLabel}: ${DateFormat('yyyy/MM/dd').format(event.date.toLocal())}'),
-                      if (event.url != null && event.url!.isNotEmpty)
-                        InkWell(
-                          onTap: () {
-                            // TODO: URLを開くロジックを実装
-                            print('URLを開く: ${event.url}');
-                          },
-                          child: Text(
-                            'URL: ${event.url}',
-                            style: const TextStyle(color: Colors.blue, decoration: TextDecoration.underline),
-                          ),
-                        ),
                     ],
                   ),
                 ),
@@ -234,9 +229,16 @@ class _EventListPageState extends State<EventListPage> {
                         child: OutlinedButton.icon( // コードボタン
                           icon: const Icon(Icons.qr_code),
                           label: Text(localizations.codeButtonText),
-                          onPressed: () {
-                            // TODO: コード利用ページへの遷移ロジック
-                            print('コード利用画面へ: ${event.name}');
+                          onPressed: () async {
+                            final bool? result = await Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => CodeUsagePage(eventId: event.id!, eventName: event.name),
+                              ),
+                            );
+                            if (result == true) {
+                              _loadEvents(); // 編集・削除が行われたらリストを再ロード
+                            }
                           },
                         ),
                       ),
