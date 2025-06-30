@@ -592,6 +592,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Import (Delete Existing)'**
   String get importConfirmButtonText;
+
+  /// No description provided for @csvImportFailedEmptyOrUnreadable.
+  ///
+  /// In en, this message translates to:
+  /// **'CSV file is empty or could not be read. Please check encoding.'**
+  String get csvImportFailedEmptyOrUnreadable;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

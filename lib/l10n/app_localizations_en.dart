@@ -310,4 +310,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get importConfirmButtonText => 'Import (Delete Existing)';
+
+  @override
+  String get csvImportFailedEmptyOrUnreadable => 'CSV file is empty or could not be read. Please check encoding.';
 }

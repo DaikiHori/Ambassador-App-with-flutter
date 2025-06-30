@@ -234,5 +234,6 @@
             "importedCodes": { "type": "int" },
             "skippedRows": { "type": "int" }
         }
-    }
+    },
+    "csvImportFailedEmptyOrUnreadable": "CSVファイルが空であるか、読み込めませんでした。エンコーディングを確認してください。"
 }

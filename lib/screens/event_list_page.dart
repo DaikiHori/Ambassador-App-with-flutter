@@ -239,7 +239,7 @@ class _EventListPageState extends State<EventListPage> {
         if (rows.isEmpty) {
           if (!mounted) return;
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(localizations.importFailedMessage('CSVファイルが空であるか、読み込めませんでした。エンコーディングを確認してください。'))),
+            SnackBar(content: Text(localizations.importFailedMessage(localizations.csvImportFailedEmptyOrUnreadable))),
           );
           return; // パース結果が空の場合はここで処理を中断
         }
