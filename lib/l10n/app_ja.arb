@@ -64,7 +64,7 @@
     "eventDeleteFailed": "イベントの削除に失敗しました: {error}",
     "cancelButtonText": "cancel",
     "editButtonText": "編集",               
-    "codeListButtonText": "コード一覧",      
+    "codeListButtonText": "一覧",
     "codeButtonText": "コード",
     "codeListPageTitle": "{eventName} のコード一覧",       
     "@codeListPageTitle": {

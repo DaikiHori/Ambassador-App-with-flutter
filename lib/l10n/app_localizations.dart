@@ -272,7 +272,7 @@ abstract class AppLocalizations {
   /// No description provided for @codeListButtonText.
   ///
   /// In en, this message translates to:
-  /// **'Code List'**
+  /// **'List'**
   String get codeListButtonText;
 
   /// No description provided for @codeButtonText.
