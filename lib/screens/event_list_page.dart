@@ -325,13 +325,35 @@ class _EventListPageState extends State<EventListPage> {
                     continue; // マッピングできない場合はこのコードをスキップ
                   }
 
+                  // usable と used カラムのboolean文字列 ("true", "false") をint (1, 0) に変換する
+                  final String? usableString = rowMap['usable']?.toString().toLowerCase().trim();
+                  int parsedUsable = 1; // デフォルトは利用可能 (1)
+                  if (usableString == 'true') {
+                    parsedUsable = 1;
+                  } else if (usableString == 'false') {
+                    parsedUsable = 0;
+                  } else {
+                    // "true"/"false"でない場合は、intとしてパースを試みる (0または1)
+                    parsedUsable = int.tryParse(usableString ?? '') ?? 1;
+                  }
+
+                  final String? usedString = rowMap['used']?.toString().toLowerCase().trim();
+                  int parsedUsed = 0; // デフォルトは未利用 (0)
+                  if (usedString == 'true') {
+                    parsedUsed = 1;
+                  } else if (usedString == 'false') {
+                    parsedUsed = 0;
+                  } else {
+                    // "true"/"false"でない場合は、intとしてパースを試みる (0または1)
+                    parsedUsed = int.tryParse(usedString ?? '') ?? 0;
+                  }
                   final newCode = Code(
                     // idはSQLiteに自動生成させるため、ここではnull
                     number: int.tryParse(rowMap['number'].toString()) ?? 0,
                     eventId: newMappedEventId, // マッピングされた新しいeventIdを使用
                     code: rowMap['code'].toString(),
-                    usable: int.tryParse(rowMap['usable'].toString()) ?? 1,
-                    used: int.tryParse(rowMap['used'].toString()) ?? 0,
+                    usable: parsedUsable,
+                    used: parsedUsed,
                     userName: rowMap['user_name']?.toString().isEmpty == true ? null : rowMap['user_name'].toString(),
                   );
                   await DbHelper.instance.insertCode(newCode);
