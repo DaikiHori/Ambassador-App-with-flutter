@@ -231,13 +231,18 @@ class _EventListPageState extends State<EventListPage> {
 
         // ユーザーがOKを選択した場合、既存の全テーブルをクリア
         await DbHelper.instance.clearAllTables();
-
         final File file = File(filePath);
         String csvContent = await file.readAsString();
-
+        csvContent = csvContent.replaceAll('\r\n', '\n');
         // CSVコンテンツを解析
-        final List<List<dynamic>> rows = const CsvToListConverter().convert(csvContent);
-
+        final List<List<dynamic>> rows = const CsvToListConverter(eol: '\n').convert(csvContent);
+        if (rows.isEmpty) {
+          if (!mounted) return;
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(localizations.importFailedMessage(localizations.csvImportFailedEmptyOrUnreadable))),
+          );
+          return; // パース結果が空の場合はここで処理を中断
+        }
         String? currentTable;
         List<String>? currentHeaders;
 
@@ -264,13 +269,21 @@ class _EventListPageState extends State<EventListPage> {
           if (row.length >= 2 && row[0] == 'table') {
             currentTable = row[1].toString();
             currentHeaders = null; // ヘッダーをリセット
+            continue;
           } else if (currentTable != null && currentHeaders == null) {
-            // テーブル名の次の行はヘッダー行
             currentHeaders = row.map((e) => e.toString()).toList();
+            currentHeaders = currentHeaders!.map((header) {
+              // 正規表現を使ってキャメルケースをスネークケースに変換
+              // 大文字の直前に_を挿入し、全てを小文字にする
+              String snakeCaseHeader = header.replaceAllMapped(RegExp(r'([A-Z])'), (match) => '_${match.group(1)?.toLowerCase()}');
+              // 変換後、先頭に余分な'_'があれば削除 (例: "Id" -> "_id" -> "id")
+              return snakeCaseHeader.startsWith('_') ? snakeCaseHeader.substring(1) : snakeCaseHeader;
+            }).toList();
+            continue;
           } else if (currentTable != null && currentHeaders != null) {
             // ヘッダーの次の行からデータ行
             final Map<String, dynamic> rowMap = {};
-            for (int j = 0; j < currentHeaders!.length; j++) {
+            for (int j = 0; j < currentHeaders.length; j++) {
               if (j < row.length) {
                 // CSVパーサーが数字をint/doubleで返す場合があるので、toString()で一貫させる
                 rowMap[currentHeaders[j]] = row[j];

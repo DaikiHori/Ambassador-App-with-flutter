@@ -310,4 +310,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get importConfirmButtonText => 'インポート (既存削除)';
+
+  @override
+  String get csvImportFailedEmptyOrUnreadable => 'CSVファイルが空であるか、読み込めませんでした。エンコーディングを確認してください。';
 }

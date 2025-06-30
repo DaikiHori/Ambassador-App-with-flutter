@@ -241,6 +241,6 @@
     },
     "importConfirmTitle": "Confirm Import",
     "importConfirmMessage": "This will delete all existing data and import new data. Are you sure you want to proceed?",
-    "importConfirmButtonText": "Import (Delete Existing)"
-
+    "importConfirmButtonText": "Import (Delete Existing)",
+    "csvImportFailedEmptyOrUnreadable": "CSV file is empty or could not be read. Please check encoding."
 }
