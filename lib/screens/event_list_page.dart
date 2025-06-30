@@ -184,7 +184,7 @@ class _EventListPageState extends State<EventListPage> {
     }
   }
 
-  // MARK: - インポート機能
+  // インポート機能
 
   Future<void> _importData() async {
     final localizations = AppLocalizations.of(context)!;
@@ -539,54 +539,70 @@ class _EventListPageState extends State<EventListPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround, // ボタンを均等配置
                     children: [
                       Expanded(
-                        child: OutlinedButton.icon( // 編集ボタン
-                          icon: const Icon(Icons.edit),
-                          label: Text(localizations.editButtonText),
+                        child: OutlinedButton(
+                          style: OutlinedButton.styleFrom(
+                            foregroundColor: Colors.blue,
+                            side: const BorderSide(color: Colors.blue),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                          ),
+                          child: Text(localizations.editButtonText),
                           onPressed: () async {
-                            final bool? result = await Navigator.push(
+                            await Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => AddEventPage(eventToEdit: event), // 編集対象を渡す
+                                builder: (context) => AddEventPage(eventToEdit: event),
                               ),
                             );
-                            if (result == true) {
-                              _loadEvents(); // 編集・削除が行われたらリストを再ロード
+                            _loadEvents();
+                          },
+                        ),
+                      ),
+                      const SizedBox(width: 8.0),
+                      Expanded(
+                        child: OutlinedButton(
+                          style: OutlinedButton.styleFrom(
+                            foregroundColor: Colors.blue,
+                            side: const BorderSide(color: Colors.blue),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                          ),
+                          child: Text(localizations.codeListButtonText),
+                          onPressed: () async {
+                            if (event.id != null) {
+                              await Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => CodeListPage(eventId: event.id! ,eventName: event.name),
+                                ),
+                              );
+                              _loadEvents();
                             }
                           },
                         ),
                       ),
                       const SizedBox(width: 8.0),
                       Expanded(
-                        child: OutlinedButton.icon( // コード一覧ボタン
-                          icon: const Icon(Icons.list),
-                          label: Text(localizations.codeListButtonText),
+                        child: OutlinedButton(
+                          style: OutlinedButton.styleFrom(
+                            foregroundColor: Colors.blue,
+                            side: const BorderSide(color: Colors.blue),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                          ),
+                          child: Text(localizations.codeButtonText),
                           onPressed: () async {
-                            final bool? result = await Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => CodeListPage(eventId: event.id! ,eventName: event.name), // 編集対象を渡す
-                              ),
-                            );
-                            if (result == true) {
-                              _loadEvents(); // 編集・削除が行われたらリストを再ロード
-                            }
-                          },
-                        ),
-                      ),
-                      const SizedBox(width: 8.0),
-                      Expanded(
-                        child: OutlinedButton.icon( // コードボタン
-                          icon: const Icon(Icons.qr_code),
-                          label: Text(localizations.codeButtonText),
-                          onPressed: () async {
-                            final bool? result = await Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => CodeUsagePage(eventId: event.id!, eventName: event.name),
-                              ),
-                            );
-                            if (result == true) {
-                              _loadEvents(); // 編集・削除が行われたらリストを再ロード
+                            if (event.id != null) { // event.idがnullでないことを確認
+                              await Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => CodeUsagePage(eventId: event.id!, eventName: event.name),
+                                ),
+                              );
+                              _loadEvents();
                             }
                           },
                         ),

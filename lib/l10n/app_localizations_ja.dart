@@ -108,7 +108,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get editButtonText => '編集';
 
   @override
-  String get codeListButtonText => 'コード一覧';
+  String get codeListButtonText => '一覧';
 
   @override
   String get codeButtonText => 'コード';

@@ -64,7 +64,7 @@
     "eventDeleteFailed": "Failed to delete event: {error}" ,
     "cancelButtonText": "cancel",
     "editButtonText": "Edit",               
-    "codeListButtonText": "Code List",      
+    "codeListButtonText": "List",
     "codeButtonText": "Code",
     "codeListPageTitle": "Codes for {eventName}",       
     "@codeListPageTitle": {
