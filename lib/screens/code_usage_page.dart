@@ -1,8 +1,10 @@
 // lib/screens/code_usage_page.dart
 
+import 'package:ambassador_app_with_flutter/screens/event_qr_page.dart';
 import 'package:flutter/material.dart';
 import '../db_helper.dart';             // DbHelperをインポート
 import '../models/code.dart';            // Codeモデルをインポート
+import '../models/event.dart';            // Codeモデルをインポート
 import 'package:ambassador_app_with_flutter/l10n/app_localizations.dart'; // 多言語対応用
 import 'package:qr_flutter/qr_flutter.dart'; // QRコード生成ライブラリ
 
@@ -32,13 +34,25 @@ class _CodeUsagePageState extends State<CodeUsagePage> {
   final TextEditingController _userNameController = TextEditingController();
   // ここに、コードをリダイレクトするベースURLを設定します。
   static const String _baseUrl = 'https://store.pokemongolive.com/offer-redemption?passcode=';
-
+  Event? _currentEvent;
   @override
   void initState() {
     super.initState();
     _loadAndPrepareCode(); // ページ初期化時にコードをロードして準備
+    _loadEventInfo();
   }
 
+  // データベースからイベント情報をロードするメソッド
+  Future<void> _loadEventInfo() async {
+    try {
+      final event = await DbHelper.instance.getEventById(widget.eventId);
+      setState(() {
+        _currentEvent = event;
+      });
+    } catch (e) {
+      print('イベント情報のロードに失敗しました: $e'); // デバッグログ
+    }
+  }
   // 利用可能かつ未使用の最初のコードをロードし、QRコードデータを準備するメソッド
   Future<void> _loadAndPrepareCode() async {
     setState(() {
@@ -123,11 +137,30 @@ class _CodeUsagePageState extends State<CodeUsagePage> {
   @override
   Widget build(BuildContext context) {
     final localizations = AppLocalizations.of(context)!;
-
+    final bool hasEventUrl = _currentEvent != null && _currentEvent!.url != null && _currentEvent!.url!.isNotEmpty;
     return Scaffold(
       appBar: AppBar(
         title: Text(localizations.codeUsagePageTitle(widget.eventName)), // イベント名を含むタイトル
+        actions: [
+          IconButton( // <-- インフォメーションアイコンを追加
+            icon: const Icon(Icons.info_outline),
+            onPressed: hasEventUrl
+            ? () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => EventQrPage(
+                    eventName: _currentEvent!.name,
+                    eventUrl: _currentEvent!.url,
+                  ),
+                ),
+              );
+            }
+            : null,
+          ),
+        ],
       ),
+
       body: _isLoading
           ? const Center(child: CircularProgressIndicator()) // ロード中はプログレスインジケータ
           : _targetCode == null
