@@ -242,5 +242,18 @@
     "importConfirmTitle": "Confirm Import",
     "importConfirmMessage": "This will delete all existing data and import new data. Are you sure you want to proceed?",
     "importConfirmButtonText": "Import (Delete Existing)",
-    "csvImportFailedEmptyOrUnreadable": "CSV file is empty or could not be read. Please check encoding."
+    "csvImportFailedEmptyOrUnreadable": "CSV file is empty or could not be read. Please check encoding.",
+    "infoIconTooltip": "Information",
+    "eventQrPageTitle": "Event QR Code: {eventName}",
+    "@eventQrPageTitle": {
+        "placeholders": {
+            "eventName": {
+                "type": "String"
+            }
+        }
+    },
+    "copiedUrlMessage": "URL copied to clipboard!",
+    "noUrlAvailable": "No URL available for this event.",
+    "noQrCodeAvailable": "No QR code can be generated as no URL is available."
+
 }

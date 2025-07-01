@@ -4,8 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart'; // クリップボード操作用
 import '../db_helper.dart'; // DbHelperをインポート
 import '../models/code.dart'; // Codeモデルをインポート
+import '../models/event.dart';
 import '../models/user.dart';
-import 'package:ambassador_app_with_flutter/l10n/app_localizations.dart'; // 多言語対応用
+import 'package:ambassador_app_with_flutter/l10n/app_localizations.dart';
+
+import 'event_qr_page.dart'; // 多言語対応用
 
 class CodeListPage extends StatefulWidget {
   final int eventId; // このページで表示するコードが紐づくイベントID
@@ -27,12 +30,13 @@ class _CodeListPageState extends State<CodeListPage> {
   // 各コードのユーザー名入力用コントローラーを管理するマップ
   final Map<int, TextEditingController> _userNameControllers = {};
   List<String> _allUserNames = [];
-
+  Event? _currentEvent;
   @override
   void initState() {
     super.initState();
     _loadCodes(); // ページ初期化時にコードをロード
     _loadUsersForAutocomplete();
+    _loadEventInfo();
   }
 
   @override
@@ -42,6 +46,17 @@ class _CodeListPageState extends State<CodeListPage> {
     super.dispose();
   }
 
+  // データベースからイベント情報をロードするメソッド
+  Future<void> _loadEventInfo() async {
+    try {
+      final event = await DbHelper.instance.getEventById(widget.eventId);
+      setState(() {
+        _currentEvent = event;
+      });
+    } catch (e) {
+      print('イベント情報のロードに失敗しました: $e'); // デバッグログ
+    }
+  }
   // データベースからコードのリストをロードするメソッド
   Future<void> _loadCodes() async {
     setState(() {
@@ -143,12 +158,31 @@ class _CodeListPageState extends State<CodeListPage> {
   @override
   Widget build(BuildContext context) {
     final localizations = AppLocalizations.of(context)!;
+    final bool hasEventUrl = _currentEvent != null && _currentEvent!.url != null && _currentEvent!.url!.isNotEmpty;
 
     return Scaffold(
       appBar: AppBar(
         title: Text(
           localizations.codeListPageTitle(widget.eventName),
         ), // イベント名を含むタイトル
+        actions: [
+          IconButton( // <-- インフォメーションアイコンを追加
+            icon: const Icon(Icons.info_outline),
+            onPressed: hasEventUrl
+                ? () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => EventQrPage(
+                    eventName: _currentEvent!.name,
+                    eventUrl: _currentEvent!.url,
+                  ),
+                ),
+              );
+            }
+                : null,
+          ),
+        ],
       ),
       body: _isLoading
           ? const Center(child: CircularProgressIndicator()) // ロード中はプログレスインジケータ

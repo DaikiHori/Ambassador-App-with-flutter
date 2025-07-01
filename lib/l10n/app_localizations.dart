@@ -598,6 +598,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'CSV file is empty or could not be read. Please check encoding.'**
   String get csvImportFailedEmptyOrUnreadable;
+
+  /// No description provided for @infoIconTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Information'**
+  String get infoIconTooltip;
+
+  /// No description provided for @eventQrPageTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Event QR Code: {eventName}'**
+  String eventQrPageTitle(String eventName);
+
+  /// No description provided for @copiedUrlMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'URL copied to clipboard!'**
+  String get copiedUrlMessage;
+
+  /// No description provided for @noUrlAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'No URL available for this event.'**
+  String get noUrlAvailable;
+
+  /// No description provided for @noQrCodeAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'No QR code can be generated as no URL is available.'**
+  String get noQrCodeAvailable;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

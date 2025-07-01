@@ -235,5 +235,18 @@
             "skippedRows": { "type": "int" }
         }
     },
-    "csvImportFailedEmptyOrUnreadable": "CSVファイルが空であるか、読み込めませんでした。エンコーディングを確認してください。"
+    "csvImportFailedEmptyOrUnreadable": "CSVファイルが空であるか、読み込めませんでした。エンコーディングを確認してください。",
+    "infoIconTooltip": "Information",
+    "eventQrPageTitle": "イベントQRコード: {eventName}",
+    "@eventQrPageTitle": {
+        "placeholders": {
+            "eventName": {
+                "type": "String"
+            }
+        }
+    },
+    "copiedUrlMessage": "URLをクリップボードにコピーしました！",
+    "noUrlAvailable": "このイベントにはURLが設定されていません。",
+    "noQrCodeAvailable": "URLが設定されていないため、QRコードを生成できません。"
+
 }

@@ -313,4 +313,21 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get csvImportFailedEmptyOrUnreadable => 'CSV file is empty or could not be read. Please check encoding.';
+
+  @override
+  String get infoIconTooltip => 'Information';
+
+  @override
+  String eventQrPageTitle(String eventName) {
+    return 'Event QR Code: $eventName';
+  }
+
+  @override
+  String get copiedUrlMessage => 'URL copied to clipboard!';
+
+  @override
+  String get noUrlAvailable => 'No URL available for this event.';
+
+  @override
+  String get noQrCodeAvailable => 'No QR code can be generated as no URL is available.';
 }
