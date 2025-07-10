@@ -247,6 +247,13 @@
     },
     "copiedUrlMessage": "URLをクリップボードにコピーしました！",
     "noUrlAvailable": "このイベントにはURLが設定されていません。",
-    "noQrCodeAvailable": "URLが設定されていないため、QRコードを生成できません。"
-
+    "noQrCodeAvailable": "URLが設定されていないため、QRコードを生成できません。",
+    "fetchCampfireEventButton": "Campfireイベント取得",
+    "failedToFetchCampfireEvent": "Campfireイベントの取得に失敗しました: {error}",
+    "campfireEventDetailsTitle": "Campfireイベント詳細",
+    "eventDescriptionLabel": "説明",
+    "eventLocationLabel": "場所",
+    "eventStartTimeLabel": "開始日時",
+    "eventEndTimeLabel": "終了日時",
+    "eventTotalAttendeesLabel": "総参加者数"
 }

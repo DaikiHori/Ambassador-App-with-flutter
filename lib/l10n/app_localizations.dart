@@ -628,6 +628,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No QR code can be generated as no URL is available.'**
   String get noQrCodeAvailable;
+
+  /// No description provided for @fetchCampfireEventButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Fetch Campfire Event'**
+  String get fetchCampfireEventButton;
+
+  /// No description provided for @failedToFetchCampfireEvent.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to fetch Campfire event: {error}'**
+  String failedToFetchCampfireEvent(Object error);
+
+  /// No description provided for @campfireEventDetailsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Campfire Event Details'**
+  String get campfireEventDetailsTitle;
+
+  /// No description provided for @eventDescriptionLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
+  String get eventDescriptionLabel;
+
+  /// No description provided for @eventLocationLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Location'**
+  String get eventLocationLabel;
+
+  /// No description provided for @eventStartTimeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Start Time'**
+  String get eventStartTimeLabel;
+
+  /// No description provided for @eventEndTimeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'End Time'**
+  String get eventEndTimeLabel;
+
+  /// No description provided for @eventTotalAttendeesLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Attendees'**
+  String get eventTotalAttendeesLabel;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

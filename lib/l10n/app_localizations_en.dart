@@ -330,4 +330,30 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get noQrCodeAvailable => 'No QR code can be generated as no URL is available.';
+
+  @override
+  String get fetchCampfireEventButton => 'Fetch Campfire Event';
+
+  @override
+  String failedToFetchCampfireEvent(Object error) {
+    return 'Failed to fetch Campfire event: $error';
+  }
+
+  @override
+  String get campfireEventDetailsTitle => 'Campfire Event Details';
+
+  @override
+  String get eventDescriptionLabel => 'Description';
+
+  @override
+  String get eventLocationLabel => 'Location';
+
+  @override
+  String get eventStartTimeLabel => 'Start Time';
+
+  @override
+  String get eventEndTimeLabel => 'End Time';
+
+  @override
+  String get eventTotalAttendeesLabel => 'Total Attendees';
 }

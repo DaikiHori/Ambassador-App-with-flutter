@@ -330,4 +330,30 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get noQrCodeAvailable => 'URLが設定されていないため、QRコードを生成できません。';
+
+  @override
+  String get fetchCampfireEventButton => 'Campfireイベント取得';
+
+  @override
+  String failedToFetchCampfireEvent(Object error) {
+    return 'Campfireイベントの取得に失敗しました: $error';
+  }
+
+  @override
+  String get campfireEventDetailsTitle => 'Campfireイベント詳細';
+
+  @override
+  String get eventDescriptionLabel => '説明';
+
+  @override
+  String get eventLocationLabel => '場所';
+
+  @override
+  String get eventStartTimeLabel => '開始日時';
+
+  @override
+  String get eventEndTimeLabel => '終了日時';
+
+  @override
+  String get eventTotalAttendeesLabel => '総参加者数';
 }

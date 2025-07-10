@@ -254,6 +254,13 @@
     },
     "copiedUrlMessage": "URL copied to clipboard!",
     "noUrlAvailable": "No URL available for this event.",
-    "noQrCodeAvailable": "No QR code can be generated as no URL is available."
-
+    "noQrCodeAvailable": "No QR code can be generated as no URL is available.",
+    "fetchCampfireEventButton": "Fetch Campfire Event",
+    "failedToFetchCampfireEvent": "Failed to fetch Campfire event: {error}",
+    "campfireEventDetailsTitle": "Campfire Event Details",
+    "eventDescriptionLabel": "Description",
+    "eventLocationLabel": "Location",
+    "eventStartTimeLabel": "Start Time",
+    "eventEndTimeLabel": "End Time",
+    "eventTotalAttendeesLabel": "Total Attendees"
 }
